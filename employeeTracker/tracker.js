@@ -65,12 +65,13 @@ function view() {
         })
         .then(function (answer) {
             if (answer.list === "Department") {
-                console.table("Department");
+                printTable("Department");
             } else if (answer.list === "Roles") {
-                console.table("Roles");
+                printTable("Roles");
             } else if (answer.list === "Employess") {
-                console.table("Employees");
+                printTable("Employees");
             }
+            start();
         }); 
 }
 
@@ -84,12 +85,33 @@ function add() {
         })
         .then(function (answer) {
             if (answer.list === "Department") {
-                console.table("Department");
+                printTable("Department");
             } else if (answer.list === "Roles") {
-                console.table("Roles");
+                printTable("Roles");
             } else if (answer.list === "Employess") {
-                console.table("Employees");
+                printTable("Employees");
             }
+            start();
+        }); 
+}
+
+function update() {
+    inquirer
+        .prompt({
+            name: "list",
+            type: "list",
+            message: "What would you like to update?",
+            choices: ["Department", "Roles", "Employees"]
+        })
+        .then(function (answer) {
+            if (answer.list === "Department") {
+                printTable("Department");
+            } else if (answer.list === "Roles") {
+                printTable("Roles");
+            } else if (answer.list === "Employess") {
+                printTable("Employees");
+            }
+            start();
         }); 
 }
 

@@ -21,16 +21,6 @@ connection.connect(function (err) {
     start();
 });
 
-//this function asks user what they want to do
-// function start() {
-//     inquirer.prompt([
-//         {
-//             name: "list",
-//             type: "list",
-//             message: "What do you want to do?",
-//             choices: ["View", "Add", "Update", "Exit"]
-//         }
-//     ])};
 function start() {
     inquirer
         .prompt({
@@ -63,5 +53,43 @@ function start() {
                     break;
             }
         });
+}
+
+function view() {
+    inquirer
+        .prompt({
+            name: "list",
+            type: "list",
+            message: "What would you like to view?",
+            choices: ["Department", "Roles", "Employees"]
+        })
+        .then(function (answer) {
+            if (answer.list === "Department") {
+                console.table("Department");
+            } else if (answer.list === "Roles") {
+                console.table("Roles");
+            } else if (answer.list === "Employess") {
+                console.table("Employees");
+            }
+        }); 
+}
+
+function add() {
+    inquirer
+        .prompt({
+            name: "list",
+            type: "list",
+            message: "What would you like to add?",
+            choices: ["Department", "Roles", "Employees"]
+        })
+        .then(function (answer) {
+            if (answer.list === "Department") {
+                console.table("Department");
+            } else if (answer.list === "Roles") {
+                console.table("Roles");
+            } else if (answer.list === "Employess") {
+                console.table("Employees");
+            }
+        }); 
 }
 

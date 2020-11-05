@@ -58,60 +58,100 @@ function start() {
 function view() {
     inquirer
         .prompt({
-            name: "list",
+            name: "view",
             type: "list",
             message: "What would you like to view?",
             choices: ["Department", "Roles", "Employees"]
         })
         .then(function (answer) {
             if (answer.list === "Department") {
-                printTable("Department");
+                console.table("Department");
             } else if (answer.list === "Roles") {
-                printTable("Roles");
+                console.table("Roles");
             } else if (answer.list === "Employess") {
-                printTable("Employees");
+                console.table("Employees");
             }
             start();
-        }); 
+        });
 }
 
 function add() {
     inquirer
         .prompt({
-            name: "list",
+            name: "add",
             type: "list",
             message: "What would you like to add?",
             choices: ["Department", "Roles", "Employees"]
         })
         .then(function (answer) {
             if (answer.list === "Department") {
-                printTable("Department");
+                inquirer
+                    .prompt([
+                        {
+                            name: "department",
+                            type: "input",
+                            message: "Enter name of new department"
+                        },
+                    ])
+                    .then(function (answer) {
+                        connection.query(
+                            "INSERT INTO departments SET ?",
+                        );
+                    });
+
+                console.table("Roles");
             } else if (answer.list === "Roles") {
-                printTable("Roles");
-            } else if (answer.list === "Employess") {
-                printTable("Employees");
+                inquirer
+                    .prompt([
+                        {
+                            name: "role",
+                            type: "input",
+                            message: "Enter name of new role"
+                        },
+                    ])
+                    .then(function (answer) {
+                        connection.query(
+                            "INSERT INTO roles SET ?",
+                        );
+                    });
+                console.table("Roles");
+            } else if (answer.list === "Employees") {
+                inquirer
+                    .prompt([
+                        {
+                            name: "employee",
+                            type: "input",
+                            message: "Enter name of new employee"
+                        },
+                    ])
+                    .then(function (answer) {
+                        connection.query(
+                            "INSERT INTO employee SET ?",
+                        );
+                    });
+                console.table("Employees");
             }
             start();
-        }); 
+        });
 }
 
 function update() {
     inquirer
         .prompt({
-            name: "list",
+            name: "update",
             type: "list",
             message: "What would you like to update?",
             choices: ["Department", "Roles", "Employees"]
         })
         .then(function (answer) {
             if (answer.list === "Department") {
-                printTable("Department");
+                console.table("Department");
             } else if (answer.list === "Roles") {
-                printTable("Roles");
+                console.table("Roles");
             } else if (answer.list === "Employess") {
-                printTable("Employees");
+                console.table("Employees");
             }
             start();
-        }); 
+        });
 }
 
